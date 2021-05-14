@@ -40,13 +40,13 @@
                                     <td><?= $data->level == 1 ? "Admin" : "User" ?></td>
                                     <td class="text-center" width="260px">
                                         <div>
-                                            <div class="card-body">
+                                            <div class="card-body text-right">
                                                 <form action="<?= site_url('user/del') ?>" method="post">
-                                                    <a href="<?= site_url('user/edit/' . $data->user_id) ?>" class="btn btn-warning" >
+                                                    <a href="<?= site_url('user/edit/' .$data->user_id) ?>" class="btn btn-warning" >
                                                        Update
                                                     </a>
                                                     <input type="hidden" name="user_id" value="<?= $data->user_id ?>">
-                                                    <button onclick="return confirm(' Are you sure delete data?')" class="btn  btn-danger" >
+                                                    <button onclick="return confirm(' Are you sure delete data?')" class="btn btn-danger" >
                                                        Delete
                                                     </button>
                                                 </form>

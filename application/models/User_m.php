@@ -27,6 +27,23 @@ class User_m extends CI_Model
     {
         $params['username'] = $post['username'];
         $params['email'] = $post['email'];
+        if(!empty($post['password'])){
+        $params['password'] = sha1($post['password']);
+        }
+        $params['start_day'] = $post['startday'];
+        $params['end_day'] = $post['endday'];
+        $params['phone'] = $post['phone'];
+        $params['address'] = $post['address'];
+        $params['level'] = $post['level'];
+        $this->db->where('user_id',$post['user_id']);
+        $this->db->update('usertab', $params);
+    }
+
+
+    public function edit($post)
+    {
+        $params['username'] = $post['username'];
+        $params['email'] = $post['email'];
         $params['password'] = sha1($post['password']);
         $params['start_day'] = $post['startday'];
         $params['end_day'] = $post['endday'];
