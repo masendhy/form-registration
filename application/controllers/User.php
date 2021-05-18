@@ -46,7 +46,7 @@ class User extends CI_Controller
     {
         
 
-        $this->form_validation->set_rules('username', 'username', 'required|min_length[5]|callback_username_check');
+        $this->form_validation->set_rules('username', 'username', 'required|min_length[5]|callback_user_check');
         if ($this->input->post('password')) {
             $this->form_validation->set_rules('password', 'password', 'min_length[7]|is_unique[usertab.password]');
             $this->form_validation->set_rules('passconfirm', 'passconfirm', 'matches[password]');
@@ -56,8 +56,8 @@ class User extends CI_Controller
             $this->form_validation->set_rules('passconfirm', 'passconfirm', 'matches[password]');
         }
 
-        $this->form_validation->set_rules('email', 'email', 'required|is_unique[usertab.email]|callback_email_check');
-        $this->form_validation->set_rules('phone', 'phone', 'required|is_unique[usertab.phone]|callback_phone_check');
+        $this->form_validation->set_rules('email', 'email', 'required|callback_email_check');
+        $this->form_validation->set_rules('phone', 'phone', 'required|callback_phone_check');
 
         $this->form_validation->set_message('is_unique', '%s is already in use');
 
@@ -81,11 +81,11 @@ class User extends CI_Controller
         }
     }
 
-    function username_check() {
+    function user_check() {
         $post = $this->input->post(null, TRUE);
-        $query = $this->db->query("SELECT * FROM usertab WHERE username = '$post[username]' AND user_id != '$post[user_id]'");
+        $query = $this->db->query("SELECT * FROM usertab WHERE username  = '$post[username]' AND user_id != '$post[user_id]'");
         if($query->num_rows() > 0) {
-            $this->form_validation->set_message('username_check', '%s is already in use');
+            $this->form_validation->set_message('user_check', '%s is already in use');
             return FALSE;
         } else {
             return TRUE;
@@ -94,7 +94,7 @@ class User extends CI_Controller
 
     function email_check() {
         $post = $this->input->post(null, TRUE);
-        $query = $this->db->query("SELECT * FROM usertab WHERE email = '$post[email]' ");
+        $query = $this->db->query("SELECT * FROM usertab WHERE email = '$post[email]' AND user_id != '$post[user_id]'");
         if($query->num_rows() > 0) {
             $this->form_validation->set_message('email_check', '%s is already in use');
             return FALSE;
@@ -105,7 +105,7 @@ class User extends CI_Controller
 
     function phone_check() {
         $post = $this->input->post(null, TRUE);
-        $query = $this->db->query("SELECT * FROM usertab WHERE phone = '$post[phone]' ");
+        $query = $this->db->query("SELECT * FROM usertab WHERE phone = '$post[phone]'AND user_id != '$post[user_id]' ");
         if($query->num_rows() > 0) {
             $this->form_validation->set_message('phone_check', '%s is already in use');
             return FALSE;

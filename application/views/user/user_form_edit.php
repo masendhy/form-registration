@@ -34,7 +34,7 @@
                           </div>
                           <div class="form-group <?= form_error('email') ? "has-error" : null ?>">
                             <label>Email</label>
-                            <!-- <input type="hidden" name="user_id" value="<?= $row->user_id ?>"> -->
+                            <input type="hidden" name="user_id" value="<?= $row->user_id ?>">
                             <input name="email"  value="<?=$this->input->post('email') ?? $row->email ?>" type="email" class="form-control ">
                             <?= form_error('email') ?>
                           </div>
@@ -58,7 +58,7 @@
                           </div>
                           <div class="form-group <?= form_error('phone') ? "has-error" : null ?>">
                             <label>Phone</label>
-                            <!-- <input type="hidden" name="user_id" value="<?= $row->user_id ?>"> -->
+                            <input type="hidden" name="user_id" value="<?= $row->user_id ?>">
                             <input name="phone" value="<?=$this->input->post('phone') ?? $row->phone ?>" type="text" class="form-control">
                             <?= form_error('phone') ?>
                           </div>
