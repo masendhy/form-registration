@@ -60,8 +60,8 @@
                             <ul class="dropdown-menu">
                                 <li><a class="nav-link" href="">Add Account</a></li></ul>
                         </li>
-                        <?php if($this->session->userdata('level') == 1) { ?>
-                        <li class="active"><a class="nav-link" href=""><i class="far fa-square"></i> <span>Data Account</span></a></li>
+                        <?php if($this->fungsi->user_login()->level == 1) { ?>
+                        <li class="active"><a class="nav-link" href="<?=site_url('account')?>"><i class="far fa-square"></i> <span>Data Account</span></a></li>
                         <li class="active"><a class="nav-link" href="<?=site_url('user')?>"><i class="far fa-square"></i> <span>User</span></a></li>
                         <?php } ?>
                 </aside>
