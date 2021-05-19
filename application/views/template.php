@@ -58,7 +58,7 @@
                         <li class="nav-item dropdown">
                             <a href="#" class="nav-link has-dropdown"><i class="fas fa-fire"></i><span>Account</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="">Add Account</a></li></ul>
+                                <li><a class="nav-link" href="<?=site_url('account/add')?>">Add Account</a></li></ul>
                         </li>
                         <?php if($this->fungsi->user_login()->level == 1) { ?>
                         <li class="active"><a class="nav-link" href="<?=site_url('account')?>"><i class="far fa-square"></i> <span>Data Account</span></a></li>

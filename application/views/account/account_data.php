@@ -1,15 +1,15 @@
 <section class="section">
     <div class="section-header">
-        <h1>Users Data</h1>
+        <h1>Account Data</h1>
     </div>
 
     <div class="section-body">
         <div class="col-12 col-md-12 col-lg-12">
             <div class="col-12 col-md-6 col-lg-6">
                 <div class="">
-                    <div class="buttons">
+                    <!-- <div class="buttons">
                         <a href="<?= site_url('account/add') ?>" class=" btn btn-icon icon-left btn-primary"><i class="fas fa-user-plus"></i> Create</a>
-                    </div>
+                    </div> -->
                 </div>
             </div>
             <div class="card">
@@ -18,12 +18,37 @@
                         <table class="table table-striped table-sm">
                             <tr>
                                 <th style="text-align: center;">No</th>
-                                <th style="text-align: center;">Username</th>
+                                <th style="text-align: center;">Name</th>
                                 <th style="text-align: center;">Email</th>
                                 <th style="text-align: center;">Phone</th>
                                 <th style="text-align: center;">Address</th>
+                                <th style="text-align: center;">Action</th>
                             </tr>
-                            
+                            <?php $no = 1;
+                            foreach ($row->result() as $key => $data) { ?>
+                                <tr>
+                                    <td><?= $no++ ?>. </td>
+                                    <td><?= $data->username ?></td>
+                                    <td><?= $data->email ?></td>
+                                    <td><?= $data->phone ?></td>
+                                    <td><?= $data->address ?></td>
+                                    <td class="text-center" width="260px">
+                                        <div>
+                                            <div class="card-body text-right">
+                                                <form action="<?= site_url('account/del') ?>" method="post">
+                                                    <a href="<?= site_url('account/edit/' .$data->user_id) ?>" class="btn btn-warning" >
+                                                       Update
+                                                    </a>
+                                                    <input type="hidden" name="user_id" value="<?= $data->user_id ?>">
+                                                    <button onclick="return confirm(' Are you sure delete data?')" class="btn btn-danger" >
+                                                       Delete
+                                                    </button>
+                                                </form>
+                                            </div>
+                                        </div>
+                                    </td>
+                                </tr>
+                            <?php } ?>
                         </table>
                     </div>
                 </div>
